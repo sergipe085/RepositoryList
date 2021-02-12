@@ -16,7 +16,8 @@ function App() {
   async function handleAddRepository() {
     // TODO add repository to api
     const res = await api.post('/projects', { title: `Projeto: ${Date.now()}` });
-    console.log(res);
+    
+    setRepositories([...repositories, res.data]);
   }
 
   async function handleRemoveRepository(id) {
@@ -29,7 +30,7 @@ function App() {
         {repositories.map((repo) => {
           return(
           <li key={repo.id}>
-            Repositório 1
+            { repo.title }
 
             <button onClick={() => handleRemoveRepository(repo.id)}>
               Remover
