@@ -21,7 +21,10 @@ function App() {
   }
 
   async function handleRemoveRepository(id) {
-    // TODO
+    // TODO remove repository by id
+    await api.delete(`projects/${id}`);
+    const res = await api.get('/projects');
+    setRepositories(res.data);
   }
 
   return (
